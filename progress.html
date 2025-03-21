@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Progress</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="progress-container">
+        <h2>📊 Student Progress Overview</h2>
+        <div class="chart-container">
+            <canvas id="progressPieChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="progressBarChart"></canvas>
+        </div>
+        <div class="progress-numbers">
+            <h3>📈 Semester Scores</h3>
+            <p>Semester 1: <strong>78%</strong></p>
+            <p>Semester 2: <strong>82%</strong></p>
+            <p>Semester 3: <strong>85%</strong></p>
+            <p>Semester 4: <strong>88%</strong></p>
+            <p>Semester 5: <strong>91%</strong></p>
+        </div>
+    </div>
+
+    <script>
+        const progressPieCtx = document.getElementById('progressPieChart').getContext('2d');
+        new Chart(progressPieCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Semester 1', 'Semester 2', 'Semester 3', 'Semester 4', 'Semester 5'],
+                datasets: [{
+                    data: [78, 82, 85, 88, 91],
+                    backgroundColor: ['red', 'orange', 'yellow', 'green', 'blue']
+                }]
+            }
+        });
+
+        const progressBarCtx = document.getElementById('progressBarChart').getContext('2d');
+        new Chart(progressBarCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Semester 1', 'Semester 2', 'Semester 3', 'Semester 4', 'Semester 5'],
+                datasets: [{
+                    label: 'Progress (%)',
+                    data: [78, 82, 85, 88, 91],
+                    backgroundColor: 'blue'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fa;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 180vh;
+        margin: 0;
+    }
+    .progress-container {
+        background: white;
+        width: 600px;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        margin: 10px;
+        text-align: center;
+    }
+    .chart-container {
+        width: 100%;
+        max-width: 500px;
+        margin: 20px auto;
+    }
+    .progress-numbers {
+        margin-top: 20px;
+    }
+    h2 {
+        color: #343a40;
+    }
+    h3 {
+        color: #007BFF;
+    }
+    p {
+        font-size: 16px;
+        margin: 5px 0;
+    }
+</style>

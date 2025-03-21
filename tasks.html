@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Tasks & Assignments</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="task-container">
+        <h2>📋 Tasks & Assignments</h2>
+        <div class="task-list">
+            <h3>Academic Tasks</h3>
+            <ul>
+                <li><span class="icon">📖</span> Complete Data Structures Assignment by March 10th. <button class="view-btn">View</button></li>
+                <li><span class="icon">📝</span> Submit Research Paper for AI by March 20th. <button class="view-btn">View</button></li>
+                <li><span class="icon">🎓</span> Group project presentation on March 25th. <button class="view-btn">View</button></li>
+            </ul>
+        </div>
+        <div class="task-list">
+            <h3>Hostel & Campus Tasks</h3>
+            <ul>
+                <li><span class="icon">🛏️</span> Submit hostel fee by March 5th. <button class="view-btn">View</button></li>
+                <li><span class="icon">🛠️</span> Maintenance request submission deadline: March 8th. <button class="view-btn">View</button></li>
+            </ul>
+        </div>
+        <div class="task-list">
+            <h3>Sports & Extra Activities</h3>
+            <ul>
+                <li><span class="icon">⚽</span> Football team trials on March 12th. <button class="view-btn">View</button></li>
+                <li><span class="icon">🏀</span> Register for inter-college basketball championship. <button class="view-btn">View</button></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.view-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                alert("More details will be available soon!");
+            });
+        });
+    </script>
+</body>
+</html>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .task-container {
+        background: white;
+        width: 500px;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-in-out;
+    }
+    .task-container:hover {
+        transform: scale(1.02);
+    }
+    h2 {
+        text-align: center;
+        color: #343a40;
+    }
+    .task-list ul {
+        list-style: none;
+        padding: 0;
+    }
+    .task-list li {
+        background: #fff;
+        padding: 12px;
+        border-radius: 8px;
+        margin: 5px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+    }
+    .task-list li:hover {
+        transform: scale(1.02);
+    }
+    .view-btn {
+        padding: 8px 12px;
+        background: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .view-btn:hover {
+        background: #0056b3;
+    }
+    .icon {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+</style>

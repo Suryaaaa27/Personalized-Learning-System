@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendation Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="recommendation-container">
+        <h2>🔍 Personalized Recommendations</h2>
+        <div class="recommendation-section">
+            <h3>📚 Course Recommendations</h3>
+            <ul>
+                <li>Advanced Machine Learning</li>
+                <li>Data Science with Python</li>
+                <li>Cloud Computing Fundamentals</li>
+            </ul>
+        </div>
+        <div class="recommendation-section">
+            <h3>📖 Study Resources</h3>
+            <ul>
+                <li>Top 10 Books for AI & ML</li>
+                <li>Best YouTube Channels for Programming</li>
+                <li>Online Platforms for Competitive Coding</li>
+            </ul>
+        </div>
+        <div class="recommendation-section">
+            <h3>🎯 Career Opportunities</h3>
+            <ul>
+                <li>Internships at Top Tech Companies</li>
+                <li>Upcoming Hackathons & Competitions</li>
+                <li>Freelancing & Open Source Contributions</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fa;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .recommendation-container {
+        background: white;
+        width: 500px;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        margin: 10px;
+        transition: transform 0.3s ease-in-out;
+    }
+    .recommendation-container:hover {
+        transform: scale(1.02);
+    }
+    h2 {
+        text-align: center;
+        color: #343a40;
+    }
+    .recommendation-section {
+        margin-top: 20px;
+    }
+    h3 {
+        color: #007BFF;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        background: #f1f1f1;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+</style>

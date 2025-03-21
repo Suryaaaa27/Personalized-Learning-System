@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Study Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="study-planner-container">
+        <h2>📚 Study Planner</h2>
+        <div class="study-section">
+            <h3>📖 Recommended Books</h3>
+            <ul>
+                <li>Data Structures & Algorithms - Robert Lafore</li>
+                <li>Artificial Intelligence - Stuart Russell</li>
+                <li>Operating Systems - Galvin</li>
+            </ul>
+        </div>
+        <div class="study-section">
+            <h3>📊 Study Charts & Notes</h3>
+            <ul>
+                <li>Mind Maps for Computer Networks</li>
+                <li>Flowcharts for Algorithm Analysis</li>
+            </ul>
+        </div>
+        <div class="study-section">
+            <h3>📝 Assignments & DPP</h3>
+            <ul>
+                <li>Data Structures Weekly Problem Set</li>
+                <li>AI and ML Assignments</li>
+            </ul>
+        </div>
+        <div class="study-section">
+            <h3>📄 Question Papers</h3>
+            <ul>
+                <li>Last 5 Years University Papers</li>
+                <li>Sample Papers for Competitive Exams</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fa;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .study-planner-container {
+        background: white;
+        width: 500px;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        margin: 10px;
+        transition: transform 0.3s ease-in-out;
+    }
+    .study-planner-container:hover {
+        transform: scale(1.02);
+    }
+    h2 {
+        text-align: center;
+        color: #343a40;
+    }
+    .study-section {
+        margin-top: 20px;
+    }
+    h3 {
+        color: #007BFF;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        background: #f1f1f1;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+</style>
