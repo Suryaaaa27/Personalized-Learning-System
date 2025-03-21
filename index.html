@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Learning System</title>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            background-color: #f4f4f4;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .dark-mode {
+            background-color: #1e1e1e;
+            color: white;
+        }
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            transition: background 0.3s ease;
+            overflow-y: auto;
+            height: 100vh;
+        }
+        .dark-mode .sidebar {
+            background: #1a252f;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 20px 0;
+        }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .sidebar ul li a:hover {
+            background: #34495e;
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .dashboard-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .dashboard-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .dark-mode .dashboard-section {
+            background: #2e2e2e;
+            color: white;
+        }
+        .theme-toggle {
+            padding: 10px;
+            background: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .theme-toggle:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>PLS Dashboard</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="mandatory.html">Academics</a></li>
+            <li><a href="syllabus.html">Syllabus</a></li>
+            <li><a href="holidays.html">Holidays</a></li>
+            <li><a href="notice.html">Important Notices</a></li>
+            <li><a href="grievance.html">Grievances</a></li>
+            <li><a href="progress.html">Course Progress</a></li>
+            <li><a href="recommendation.html">Recommendations</a></li>
+            <li><a href="analytics.html">Analytics Dashboard</a></li>
+            <li><a href="studyplanner.html">Study Planner</a></li>
+            <li><a href="chatbot.html">Chatbot</a></li>
+            <li><a href="tasks.html">To-Do & Notes</a></li>
+            <li><a href="notifications.html">Notifications</a></li>
+            <li><a href="document.html">Document Management</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="settings.html">Settings</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Welcome to Your Learning Hub :)</h1>
+            <button class="theme-toggle">Dark Mode</button>
+        </header>
+        <section id="analytics" class="dashboard-section">
+            <h2>📊 Analytics Dashboard</h2>
+            <p>Track your progress with real-time data visualizations.</p>
+        </section>
+        <section id="study-planner" class="dashboard-section">
+            <h2>📝 AI-Powered Study Planner</h2>
+            <p>Get personalized study schedules based on your progress.</p>
+        </section>
+        <section id="chatbot" class="dashboard-section">
+            <h2>💬 Chatbot</h2>
+            <p>Ask quick queries and get instant responses.</p>
+        </section>
+        <section id="tasks" class="dashboard-section">
+            <h2>📌 To-Do List & Notes</h2>
+            <p>Keep track of your tasks and study notes.</p>
+        </section>
+        <section id="notifications" class="dashboard-section">
+            <h2>🔔 Notifications & Alerts</h2>
+            <p>Stay updated with important alerts and recommendations.</p>
+        </section>
+        <section id="documents" class="dashboard-section">
+            <h2>📁 Document Upload & Download</h2>
+            <p>Upload assignments and access study materials.</p>
+        </section>
+        <section id="feedback" class="dashboard-section">
+            <h2>⭐ Feedback</h2>
+            <p>We value your feedback! Please click on the below button to share your feedback...!!</p>
+            <button type="submit" onclick="window.location.href='feedback.html'">Submit</button>
+        </section>
+        <div id="analytics-data"></div>
+
+    </div>
+    <script>
+        const themeToggle = document.querySelector('.theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+        fetch('/get-analytics/1')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('studyHours').innerText = data.study_hours;
+        document.getElementById('syllabusCompletion').innerText = data.syllabus_completion + '%';
+    })
+    .catch(error => console.error('Error fetching analytics:', error));
+    function submitFeedback() {
+    let name = document.getElementById('feedbackName').value;
+    let email = document.getElementById('feedbackEmail').value;
+    let feedback = document.getElementById('feedbackText').value;
+
+    fetch('/submit-feedback', { method: 'POST' })
+, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email, feedback })
+    }
+    .then(response => response.json())
+    .then(data => alert(data.message))
+    .catch(error => console.error('Error submitting feedback:', error));
+}
+document.addEventListener("DOMContentLoaded", function () {
+    const analyticsElement = document.getElementById("analytics-data");
+    if (analyticsElement) {
+        analyticsElement.innerText = "Fetching data...";
+        fetch("http://127.0.0.1:5000/get-analytics")
+            .then(response => response.json())
+            .then(data => {
+                analyticsElement.innerText = data.value; 
+            })
+            .catch(error => console.error("Error fetching analytics:", error));
+    } else {
+        console.error("Element #analytics-data not found!");
+    }
+});
+
+
+
+    </script>
+</body>
+</html>
