@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Learning System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            background-color: #f4f4f4;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .dark-mode {
+            background-color: #1e1e1e;
+            color: white;
+        }
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            transition: background 0.3s ease;
+            overflow-y: auto;
+            height: 100vh;
+        }
+        .dark-mode .sidebar {
+            background: #1a252f;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 20px 0;
+        }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .sidebar ul li a:hover {
+            background: #34495e;
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .dashboard-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .dashboard-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .dark-mode .dashboard-section {
+            background: #2e2e2e;
+            color: white;
+        }
+        .theme-toggle {
+            padding: 10px;
+            background: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .theme-toggle:hover {
+            background: #2980b9;
+        }
+        .feedback-form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .dark-mode .feedback-form {
+            background: #2e2e2e;
+            color: white;
+        }
+        .feedback-form input, .feedback-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border 0.3s ease;
+        }
+        .feedback-form textarea {
+            resize: vertical;
+        }
+        .feedback-form button {
+            padding: 10px 15px;
+            margin-top: 10px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .feedback-form button:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>PLS Dashboard</h2>
+        <ul>
+            <li><a href="file:///C:/Users/sriva/PycharmProjects/Personalized%20Learning%20System/index.html">Home</a></li>
+            <li><a href="file:///C:/Users/sriva/PycharmProjects/Personalized%20Learning%20System/mandatory.html">Academics</a></li>
+            <li><a href="file:///C:/Users/sriva/PycharmProjects/Personalized%20Learning%20System/syllabus.html">Syllabus</a></li>
+            <li><a href="file:///C:/Users/sriva/PycharmProjects/Personalized%20Learning%20System/holidays.html">Holidays</a></li>
+            <li><a href="file:///C:/Users/sriva/PycharmProjects/Personalized%20Learning%20System/notice.html">Important Notices</a></li>
+            <li><a href="file:///C:/Users/sriva/PycharmProjects/Personalized%20Learning%20System/grievance.html">Grievances</a></li>
+            <li><a href="file:///C:/Users/sriva/PycharmProjects/Personalized%20Learning%20System/progress.html">Course Progress</a></li>
+            <li><a href="file:///C:/Users/sriva/PycharmProjects/Personalized%20Learning%20System/recommendation.html">Recommendations</a></li>
+            <li><a href="file:///C:/Users/sriva/PycharmProjects/Personalized%20Learning%20System/analytics.html">Analytics Dashboard</a></li>
+            <li><a href="file:///C:/Users/sriva/PycharmProjects/Personalized%20Learning%20System/studyplanner.html">Study Planner</a></li>
+            <li><a href="file:///C:/Users/sriva/PycharmProjects/Personalized%20Learning%20System/chatbot.html">Chatbot</a></li>
+            <li><a href="file:///C:/Users/sriva/PycharmProjects/Personalized%20Learning%20System/tasks.html">To-Do & Notes</a></li>
+            <li><a href="file:///C:/Users/sriva/PycharmProjects/Personalized%20Learning%20System/notifications.html">Notifications</a></li>
+            <li><a href="file:///C:/Users/sriva/PycharmProjects/Personalized%20Learning%20System/document.html">Document Management</a></li>
+            <li><a href="file:///C:/Users/sriva/PycharmProjects/Personalized%20Learning%20System/settings.html">Settings</a></li>
+            <li><a href="file:///C:/Users/sriva/PycharmProjects/Personalized%20Learning%20System/uploads/login.html">Login</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Please provide your valuable Feedback</h1>
+            <button class="theme-toggle">Dark Mode</button>
+        </header>
+        <section id="feedback" class="dashboard-section">
+            <h2>Feedback</h2>
+            <p>We value your feedback! Please let us know your thoughts below.</p>
+            <form class="feedback-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="4" placeholder="Your Feedback" required></textarea>
+                <button type="submit">Submit Feedback</button>
+            </form>
+        </section>
+    </div>
+    <script>
+        const themeToggle = document.querySelector('.theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+</html>
