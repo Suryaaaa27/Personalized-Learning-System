@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Holidays</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        const holidays = {
+            "January": {26: "Republic Day"},
+            "February": {},
+            "March": {20: "Festival of Colors", 21: "Spring Equinox"},
+            "April": {},
+            "May": {},
+            "June": {},
+            "July": {},
+            "August": {15: "Independence Day"},
+            "September": {},
+            "October": {},
+            "November": {4: "Diwali", 5: "Govardhan Puja"},
+            "December": {25: "Christmas"}
+        };
+
+        function generateCalendar(month, year) {
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const firstDay = new Date(year, month, 1).getDay();
+            const calendarContainer = document.getElementById("calendar");
+            calendarContainer.innerHTML = "";
+
+            let table = `<div class='month'><h3>${monthNames[month]}</h3><table><tr>`;
+            let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            table += daysOfWeek.map(day => `<th>${day}</th>`).join("");
+            table += "</tr><tr>";
+
+            for (let i = 0; i < firstDay; i++) {
+                table += "<td></td>";
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                let isHoliday = holidays[monthNames[month]] && holidays[monthNames[month]][day];
+                table += `<td class="${isHoliday ? 'holiday' : ''}">${day}</td>`;
+                if ((day + firstDay) % 7 === 0) table += "</tr><tr>";
+            }
+
+            table += "</tr></table>";
+            
+            if (Object.keys(holidays[monthNames[month]]).length > 0) {
+                table += "<ul class='holiday-list'>";
+                for (let day in holidays[monthNames[month]]) {
+                    table += `<li>${day}: ${holidays[monthNames[month]][day]}</li>`;
+                }
+                table += "</ul>";
+            }
+            
+            table += "</div>";
+            calendarContainer.innerHTML = table;
+        }
+
+        let currentMonth = new Date().getMonth();
+        let currentYear = new Date().getFullYear();
+
+        function nextMonth() {
+            currentMonth = (currentMonth + 1) % 12;
+            generateCalendar(currentMonth, currentYear);
+        }
+
+        function prevMonth() {
+            currentMonth = (currentMonth - 1 + 12) % 12;
+            generateCalendar(currentMonth, currentYear);
+        }
+
+        window.onload = () => generateCalendar(currentMonth, currentYear);
+    </script>
+</head>
+<body>
+    <div class="holiday-container">
+        <h2>📅 University Holidays</h2>
+        <p class="description">Check the list of holidays and plan your schedule accordingly.</p>
+        <button onclick="prevMonth()">&#9665; Previous</button>
+        <button onclick="nextMonth()">Next &#9655;</button>
+        <div id="calendar" class="calendar"></div>
+    </div>
+</body>
+</html>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fa;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 20px;
+    }
+    .holiday-container {
+        background: white;
+        width: 90%;
+        max-width: 800px;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+    h2 {
+        color: #343a40;
+    }
+    .description {
+        font-size: 14px;
+        color: #6c757d;
+        margin-bottom: 20px;
+    }
+    .calendar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+    th, td {
+        width: 14.2%;
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+    .holiday {
+        background-color: #ffcccb;
+        font-weight: bold;
+    }
+    .holiday-list {
+        margin-top: 10px;
+        padding: 0;
+        list-style: none;
+        text-align: left;
+    }
+    .holiday-list li {
+        background: #ffebcc;
+        margin: 5px 0;
+        padding: 8px;
+        border-radius: 5px;
+    }
+    button {
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
