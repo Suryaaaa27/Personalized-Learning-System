@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Academics</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function checkLogin() {
+            const loggedIn = sessionStorage.getItem("loggedIn");
+            if (!loggedIn) {
+                alert("Please log in first to access this feature.");
+                window.location.href = "login.html";
+                return false;
+            }
+            return true;
+        }
+        function toggleSection(id) {
+            if (!checkLogin()) return;
+            const section = document.getElementById(id);
+            section.style.display = section.style.display === "none" ? "block" : "none";
+        }
+    </script>
+</head>
+<body>
+    <div class="academics-container">
+        <h2>🎓 University Academics</h2>
+        <p class="description">Access all academic resources, schedules, and important updates.</p>
+        
+        <input type="text" id="search" placeholder="Search academics..." onkeyup="filterSubjects()">
+        
+        <div class="section" onclick="toggleSection('syllabus')">📖 Syllabus</div>
+        <div id="syllabus" class="content">
+            <ul>
+                <li>📘 Course Structure</li>
+                <li>📄 Study Materials</li>
+                <li>📜 Previous Year Papers</li>
+            </ul>
+        </div>
+
+        <div class="section" onclick="toggleSection('timetable')">🕒 Timetable</div>
+        <div id="timetable" class="content">
+            <ul>
+                <li>📅 Semester Timetable</li>
+                <li>📆 Exam Schedule</li>
+                <li>📋 Lecture Slots</li>
+            </ul>
+        </div>
+
+        <div class="section" onclick="toggleSection('assignments')">📝 Assignments</div>
+        <div id="assignments" class="content">
+            <ul>
+                <li>📌 Pending Assignments</li>
+                <li>✅ Submitted Assignments</li>
+                <li>⏳ Deadlines & Reminders</li>
+            </ul>
+        </div>
+
+        <div class="section" onclick="toggleSection('grades')">📊 Grades & Performance</div>
+        <div id="grades" class="content">
+            <ul>
+                <li>📈 Semester-wise Grades</li>
+                <li>🏆 Academic Achievements</li>
+                <li>📊 Progress Charts</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fa;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 20px;
+    }
+    .academics-container {
+        background: white;
+        width: 90%;
+        max-width: 800px;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+    .description {
+        font-size: 14px;
+        color: #6c757d;
+        margin-bottom: 20px;
+    }
+    .section {
+        background-color: #28a745;
+        color: white;
+        padding: 10px;
+        margin: 5px 0;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    .section:hover {
+        background-color: #218838;
+    }
+    .content {
+        display: none;
+        background: #f1f1f1;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+    ul li {
+        background: #e9ecef;
+        margin: 5px 0;
+        padding: 8px;
+        border-radius: 5px;
+    }
+    #search {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+</style>
