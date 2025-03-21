@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Document Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="document-container">
+        <h2>📂 Document Management</h2>
+        <div class="upload-section">
+            <h3>Upload Document</h3>
+            <input type="file" id="fileUpload">
+            <button onclick="uploadDocument()">Upload</button>
+        </div>
+        <div class="document-list">
+            <h3>Available Documents</h3>
+            <ul id="docList">
+                <li><span class="icon">📄</span> Syllabus.pdf <button class="download-btn">Download</button></li>
+                <li><span class="icon">📄</span> Exam Schedule.docx <button class="download-btn">Download</button></li>
+                <li><span class="icon">📄</span> Student Handbook.pdf <button class="download-btn">Download</button></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function uploadDocument() {
+            let fileInput = document.getElementById("fileUpload");
+            if (fileInput.files.length > 0) {
+                let fileName = fileInput.files[0].name;
+                let docList = document.getElementById("docList");
+                let listItem = document.createElement("li");
+                listItem.innerHTML = `<span class="icon">📄</span> ${fileName} <button class="download-btn">Download</button>`;
+                docList.appendChild(listItem);
+                alert("Document uploaded successfully!");
+            } else {
+                alert("Please select a document to upload.");
+            }
+        }
+    </script>
+</body>
+</html>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .document-container {
+        background: white;
+        width: 450px;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-in-out;
+    }
+    .document-container:hover {
+        transform: scale(1.02);
+    }
+    h2 {
+        text-align: center;
+        color: #343a40;
+    }
+    .upload-section {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .upload-section input {
+        display: block;
+        margin: 10px auto;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    .upload-section button {
+        padding: 10px 15px;
+        background: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .upload-section button:hover {
+        background: #0056b3;
+    }
+    .document-list ul {
+        list-style: none;
+        padding: 0;
+    }
+    .document-list li {
+        background: #fff;
+        padding: 12px;
+        border-radius: 8px;
+        margin: 5px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+    }
+    .document-list li:hover {
+        transform: scale(1.02);
+    }
+    .download-btn {
+        padding: 8px 12px;
+        background: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .download-btn:hover {
+        background: #218838;
+    }
+    .icon {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+</style>
